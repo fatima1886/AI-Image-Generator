@@ -1,1 +1,17 @@
+/* @import "tailwindcss";
+
+.orbitron {
+  font-family: "Orbitron", sans-serif;
+  font-optical-sizing: auto;
+  font-weight:bold;
+  font-style: normal;
+} */
+
 @import "tailwindcss";
+
+/* Change .orbitron to .font-orbitron */
+.font-orbitron {
+  font-family: "Orbitron", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
