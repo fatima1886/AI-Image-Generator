@@ -8,7 +8,7 @@ const Card1 = () => {
   const [quality, setQuality] = useState(50);
 
   return (
-    <div className='flex flex-col h-fit sm:h-full w-full sm:border sm:border-zinc-800 rounded-2xl p-3 sm:p-5 justify-start sm:justify-between space-y-6 sm:space-y-0 space-y-3 sm:space-y-5'>
+    <div className='flex flex-col h-fit sm:h-fit w-full sm:border sm:border-zinc-800 rounded-2xl p-3 sm:p-5 justify-start sm:justify-between space-y-6 sm:space-y-0 space-y-3 sm:space-y-5'>
       {/* Top Controls Area */}
       <div className='flex flex-col space-y-3 sm:space-y-5'>
         

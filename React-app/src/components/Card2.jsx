@@ -40,7 +40,7 @@ const Card2 = () => {
     <div
       style={{ backgroundImage: `url(/bg-new.jpg)`, objectFit: "cover", objectPosition: "left" }}
       /* FIXED: Added bg-cover, bg-center, bg-no-repeat, and relative position utilities */
-      className=" border border-zinc-800 rounded-2xl flex flex-col items-center justify-center p-6 text-center group min-h-[400px] sm:h-full relative overflow-hidden bg-cover bg-center bg-no-repeat"
+      className=" border border-zinc-800 rounded-2xl flex flex-col items-center justify-center p-6 text-center group min-h-[400px] sm:h-[95vh] relative overflow-hidden bg-cover bg-center bg-no-repeat"
     >
       {/* ADDED: A smooth, dark gradient overlay so your icons/text remain highly readable over the background image */}
       {/* <div className="absolute inset-0 bg-gradient-to-t from-[#161616]/95 via-[#161616]/60 to-transparent z-0"></div> */}
