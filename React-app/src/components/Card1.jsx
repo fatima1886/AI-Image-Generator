@@ -1,11 +1,57 @@
 
 
+
 import React, { useState } from 'react'
 import AspectRatioSelector from './Ratio';
 import Presents from './presents';
 
 const Card1 = () => {
   const [quality, setQuality] = useState(50);
+  const [prompt, setprompt] = useState("");
+  
+  // States to handle image output, loading animations, and errors
+  const [imageUrl, setImageUrl] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  // 100% Free image generation function (No API key or dashboard login needed)
+  async function generateAndGetImage() {
+    if (!prompt.trim()) {
+      setError("Please enter a prompt first!");
+      return;
+    }
+
+    setLoading(true);
+    setError("");
+    setImageUrl(""); // Clear past image while loading
+
+    // Safely encode the prompt text for the URL string
+    const encodedPrompt = encodeURIComponent(prompt.trim());
+    
+    // Public community proxy; no API key or authorization header is required.
+    const url = `https://image.pollinations.ai/p/${encodedPrompt}?model=flux&width=1024&height=1240`;
+
+    try {
+        // Clean GET request with zero authorization headers to bypass CORS and 401 blocks
+        const response = await fetch(url, { method: 'GET' });
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const imageBlob = await response.blob();
+        const localImageUrl = URL.createObjectURL(imageBlob);
+        
+        console.log("Local browser image URL:", localImageUrl);
+        setImageUrl(localImageUrl); // Save the image blob link to display it
+
+    } catch (error) {
+        console.error("Error generating image:", error);
+        setError(error.message || "Failed to generate image. Please try again.");
+    } finally {
+        setLoading(false);
+    }
+  }
 
   return (
     <div className='flex flex-col h-fit sm:h-fit w-full sm:border sm:border-zinc-800 rounded-2xl p-3 sm:p-5 justify-start sm:justify-between space-y-6 sm:space-y-0 space-y-3 sm:space-y-5'>
@@ -34,6 +80,8 @@ const Card1 = () => {
             className='w-full h-[120px] bg-zinc-800/80 border border-zinc-700/60 rounded-xl p-3.5 focus:outline-none focus:border-[#df7829] text-zinc-100 placeholder-zinc-500 text-sm resize-none transition-colors' 
             placeholder="A cybernetic artifact hidden inside a misty mountain shrine..."
             id="prompt-input"
+            value={prompt}
+            onChange={(e)=>setprompt(e.target.value)}
           />
         </div>
 
@@ -62,10 +110,29 @@ const Card1 = () => {
 
       </div>
 
+      {/* Dynamic Image Display Viewport */}
+      {(loading || imageUrl || error) && (
+        <div className="mt-4 p-4 bg-zinc-900 border border-zinc-800 rounded-xl flex flex-col items-center justify-center min-h-[200px]">
+          {loading && <p className="text-zinc-400 animate-pulse text-sm">Crafting your masterpiece...</p>}
+          {error && <p className="text-red-400 text-sm">{error}</p>}
+          {imageUrl && !loading && (
+            <img 
+              src={imageUrl} 
+              alt="AI Output" 
+              className="max-h-[400px] w-auto object-contain rounded-lg shadow-md"
+            />
+          )}
+        </div>
+      )}
+
       {/* Primary Action Trigger Button */}
       <div className="pt-5 mt-4 border-t border-zinc-800/80">
-        <button className="w-full py-3 bg-[#df7829] hover:bg-[#c9661e] text-white rounded-xl font-bold text-sm tracking-wide transition-all active:scale-[0.99] shadow-lg shadow-[#df7829]/10">
-          Generate Masterpiece ✨
+        <button 
+          onClick={generateAndGetImage}
+          disabled={loading}
+          className="w-full py-3 bg-[#df7829] hover:bg-[#c9661e] disabled:bg-zinc-700 disabled:cursor-not-allowed text-white rounded-xl font-bold text-sm tracking-wide transition-all active:scale-[0.99] shadow-lg shadow-[#df7829]/10"
+        >
+          {loading ? 'Processing ✨' : 'Generate Masterpiece ✨'}
         </button>
       </div>
 
@@ -73,4 +140,7 @@ const Card1 = () => {
   )
 }
 
-export default Card1
+export default Card1;
+
+
+
