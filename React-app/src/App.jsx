@@ -12,7 +12,10 @@ function App() {
   const [mainloading, setmainLoading] = useState(false);
   const [historyimgs, sethistoryimgs] = useState([])
   return (
-    <section className='min-h-screen w-screen overflow-x-hidden bg-zinc-100 p-3 font-sans text-zinc-900 transition-colors md:grid md:grid-cols-3 md:gap-3 md:p-4 dark:bg-[#181818] dark:text-white'>
+    <section className='min-h-screen w-full overflow-x-hidden bg-zinc-100 p-3 font-sans text-zinc-900 transition-colors md:grid md:grid-cols-3 md:gap-3 md:p-4 dark:bg-[#181818] dark:text-white   [&::-webkit-scrollbar-track]:rounded-lg
+ [&::-webkit-scrollbar-thumb]:bg-[#df7829]
+  [&::-webkit-scrollbar-thumb]:rounded-lg
+  [hover:&::-webkit-scrollbar-thumb]:bg-[#f08c3f]">'>
       <Card1 prompt={mainprompt} setprompt={setmainprompt} imageUrl={mainimageUrl} setImageUrl={setmainImageUrl} loading={mainloading} setLoading={setmainLoading} setotherprompt={setothermainprompt}/>
       <Card2 imageUrl={mainimageUrl} loading={mainloading} setimages={sethistoryimgs} otherprompt={othermainprompt} images={historyimgs} setotherprompt={setothermainprompt} setImageUrl={setmainImageUrl} />
       <Card3 images={historyimgs} setprompt={setmainprompt} setImageUrl={setmainImageUrl}/>
