@@ -5,13 +5,13 @@ import React, { useState } from 'react'
 import AspectRatioSelector from './Ratio';
 import Presents from './presents';
 
-const Card1 = () => {
+const Card1 = ({prompt,setprompt,setImageUrl,loading,setLoading}) => {
   const [quality, setQuality] = useState(50);
-  const [prompt, setprompt] = useState("");
+  // const [prompt, setprompt] = useState("");
   
   // States to handle image output, loading animations, and errors
-  const [imageUrl, setImageUrl] = useState("");
-  const [loading, setLoading] = useState(false);
+  // const [imageUrl, setImageUrl] = useState("");
+  // const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   // 100% Free image generation function (No API key or dashboard login needed)
@@ -20,13 +20,13 @@ const Card1 = () => {
       setError("Please enter a prompt first!");
       return;
     }
-
+setprompt("")
     setLoading(true);
     setError("");
     setImageUrl(""); // Clear past image while loading
 
     // Safely encode the prompt text for the URL string
-    const encodedPrompt = encodeURIComponent(prompt.trim());
+    const encodedPrompt = encodeURIComponent(prompt.trim()+ 'the quality of image should be' + {quality});
     
     // Public community proxy; no API key or authorization header is required.
     const url = `https://image.pollinations.ai/p/${encodedPrompt}?model=flux&width=1024&height=1240`;
@@ -52,6 +52,13 @@ const Card1 = () => {
         setLoading(false);
     }
   }
+
+
+  function handlechange(e) {
+    setprompt(e.target.value)
+  }
+
+
 
   return (
     <div className='flex flex-col h-fit sm:h-fit w-full sm:border sm:border-zinc-800 rounded-2xl p-3 sm:p-5 justify-start sm:justify-between space-y-6 sm:space-y-0 space-y-3 sm:space-y-5'>
@@ -81,7 +88,7 @@ const Card1 = () => {
             placeholder="A cybernetic artifact hidden inside a misty mountain shrine..."
             id="prompt-input"
             value={prompt}
-            onChange={(e)=>setprompt(e.target.value)}
+            onChange={handlechange}
           />
         </div>
 
@@ -104,14 +111,14 @@ const Card1 = () => {
 
         {/* Child Sub-Selectors */}
         <div className="space-y-4 pt-1">
-          <AspectRatioSelector/>
+          {/* <AspectRatioSelector/> */}
           <Presents/>
         </div>
 
       </div>
 
       {/* Dynamic Image Display Viewport */}
-      {(loading || imageUrl || error) && (
+      {/* {(loading || imageUrl || error) && (
         <div className="mt-4 p-4 bg-zinc-900 border border-zinc-800 rounded-xl flex flex-col items-center justify-center min-h-[200px]">
           {loading && <p className="text-zinc-400 animate-pulse text-sm">Crafting your masterpiece...</p>}
           {error && <p className="text-red-400 text-sm">{error}</p>}
@@ -119,11 +126,19 @@ const Card1 = () => {
             <img 
               src={imageUrl} 
               alt="AI Output" 
-              className="max-h-[400px] w-auto object-contain rounded-lg shadow-md"
+              className="max-h-[400px] w-auto object-cover rounded-lg shadow-md"
             />
+
+//             <div className="image-grid">
+//   {imageUrls.map((url, index) => (
+//     <div key={index} className="image-card">
+//       <img src={url} alt={`Generated variation ${index + 1}`} />
+//     </div>
+//   ))}
+// </div>
           )}
         </div>
-      )}
+      )} */}
 
       {/* Primary Action Trigger Button */}
       <div className="pt-5 mt-4 border-t border-zinc-800/80">
