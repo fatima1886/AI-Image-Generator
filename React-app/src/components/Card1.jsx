@@ -4,6 +4,7 @@
 import React, { useState } from 'react'
 import AspectRatioSelector from './Ratio';
 import Presents from './presents';
+import ThemeToggle from './ThemeToggle';
 
 const Card1 = ({prompt,setprompt,setImageUrl,loading,setLoading,setotherprompt}) => {
   const [quality, setQuality] = useState(50);
@@ -62,30 +63,28 @@ setprompt("")
 
 
   return (
-    <div className='flex flex-col h-fit sm:h-fit w-full sm:border sm:border-zinc-800 rounded-2xl p-3 sm:p-5 justify-start sm:justify-between space-y-6 sm:space-y-0 space-y-3 sm:space-y-5'>
+    <div className='flex h-fit w-full flex-col justify-start space-y-3  rounded-2xl bg-white p-3 shadow-xl shadow-gray-400 sm:justify-between sm:space-y-5 sm:border sm:border-zinc-200 sm:p-5 dark:border-zinc-800 dark:bg-zinc-900'>
       {/* Top Controls Area */}
       <div className='flex flex-col space-y-3 sm:space-y-5'>
         
         {/* Header/Logo Line */}
         <div className="flex justify-between items-center">
-          <h1 className='select-none font-orbitron text-[20px] md:text-xl font-bold uppercase tracking-wider text-white'>
+          <h1 className='select-none font-orbitron text-[20px] font-bold uppercase tracking-wider text-zinc-900 md:text-xl dark:text-white'>
             I<span className="text-[#df7829]">Gen</span>
           </h1>
-          <button className='px-4 py-2 sm:py-2 sm:px-4 rounded-lg bg-[#df7829] text-white text-sm md:text-xs font-semibold cursor-pointer hover:opacity-90 active:scale-95 transition-all'>
-            Toggle Mode
-          </button>
+          <ThemeToggle />
         </div>
 
         {/* Section Title */}
         <div>
-          <h2 className='text-white text-2xl pt-3 sm:pt-0 sm:text-3xl font-semibold sm:font-semibold tracking-tight'>Generate Images</h2>
+          <h2 className='pt-3 text-2xl font-semibold tracking-tight text-zinc-900 sm:pt-0 sm:text-3xl dark:text-white'>Generate Images</h2>
         </div>
 
         {/* Prompt Input Box */}
         <div className="flex flex-col space-y-1.5 ">
-          <label className="text-zinc-400 text-xs font-semibold uppercase tracking-wider">Your Prompt</label>
+          <label className="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Your Prompt</label>
           <textarea 
-            className='w-full h-[120px] bg-zinc-800/80 border border-[#df7829] rounded-sm p-3.5 focus:outline-none focus:border-[#df7829] text-zinc-100 placeholder-zinc-500 text-sm resize-none transition-colors [&::-webkit-scrollbar]:w-2
+            className='h-[120px] w-full resize-none rounded-sm border border-[#df7829] bg-white p-3.5 text-sm text-zinc-800 placeholder-zinc-400 transition-colors focus:border-[#df7829] focus:outline-none dark:bg-zinc-800/80 dark:text-zinc-100 dark:placeholder-zinc-500 [&::-webkit-scrollbar]:w-2
  
   [&::-webkit-scrollbar-track]:rounded-lg
  [&::-webkit-scrollbar-thumb]:bg-[#df7829]
@@ -100,7 +99,7 @@ setprompt("")
 
         {/* Quality Controls Slider */}
         <div className="flex flex-col space-y-2">
-          <div className="flex justify-between text-xs font-semibold text-zinc-400 uppercase tracking-wider">
+          <div className="flex justify-between text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             <span>Quality Setting</span>
             <span className="text-[#df7829] font-bold font-mono text-sm">{quality}%</span>
           </div>
@@ -111,7 +110,7 @@ setprompt("")
             max="100" 
             value={quality}
             onChange={(e) => setQuality(e.target.value)}
-            className="w-full h-1.5 bg-zinc-700 rounded-lg appearance-none cursor-pointer accent-[#df7829] focus:outline-none"
+            className="h-1.5 w-full cursor-pointer appearance-none rounded-lg bg-zinc-200 accent-[#df7829] focus:outline-none dark:bg-zinc-700"
           />
         </div>
 
@@ -147,11 +146,11 @@ setprompt("")
       )} */}
 
       {/* Primary Action Trigger Button */}
-      <div className="pt-5 mt-4 border-t border-zinc-800/80">
+      <div className="mt-4 border-t border-zinc-200/80 pt-5 dark:border-zinc-800/80">
         <button 
           onClick={generateAndGetImage}
           disabled={loading}
-          className="w-full py-3 bg-[#df7829] hover:bg-[#c9661e] disabled:bg-zinc-700 disabled:cursor-not-allowed text-white rounded-xl font-bold text-sm tracking-wide transition-all active:scale-[0.99] shadow-lg shadow-[#df7829]/10"
+          className="w-full rounded-xl bg-[#df7829] py-3 text-sm font-bold tracking-wide text-white shadow-lg shadow-[#df7829]/10 transition-all hover:bg-[#c9661e] active:scale-[0.99] disabled:cursor-not-allowed disabled:bg-zinc-300 dark:disabled:bg-zinc-700"
         >
           {loading ? 'Processing ✨' : 'Generate Masterpiece ✨'}
         </button>

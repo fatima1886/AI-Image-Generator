@@ -8,7 +8,7 @@ const Card3 = ({ images,setprompt,setImageUrl }) => {
   }
   return (
     !images?.length ? (
-        ( <div className="flex flex-col items-center justify-center text-center p-8 border border border-[#df7829] bg-slate-800/50 rounded-xl h-[95vh] h-[70%] min-h-[250px] w-full group transition-all duration-500 hover:border-[#df7829]/50">
+        ( <div className="flex flex-col items-center justify-center text-center p-8 border border border-[#df7829] bg-gray-100 dark:bg-slate-800 rounded-xl h-[95vh] h-[70%] min-h-[250px] w-full group transition-all duration-500 hover:border-[#df7829]/50">
       
       {/* Animated Icon Container */}
       <div className="relative mb-4 flex items-center justify-center">

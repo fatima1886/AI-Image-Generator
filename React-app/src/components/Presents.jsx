@@ -38,7 +38,7 @@ const Presents = () => {
 
   return (
     <div className="flex flex-col space-y-2 mt-4">
-      <span className="text-zinc-400 text-xs font-semibold uppercase tracking-wider">Art Style</span>
+      <span className="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Art Style</span>
       <div className="flex flex-wrap gap-2">
         {stylePresets.map((style) => (
           <button
@@ -47,7 +47,7 @@ const Presents = () => {
             className={`px-3 py-1.5 text-xs font-medium rounded-full transition-all border cursor-pointer uppercase tracking-wider ${
               selectedStyle === style 
                 ? 'bg-[#df7829] text-white border-[#df7829] shadow-md shadow-[#df7829]/20' 
-                : 'bg-zinc-800/60 text-zinc-400 border-zinc-700/60 hover:border-zinc-500'
+                : 'border-zinc-200 bg-zinc-50 text-zinc-600 hover:border-zinc-400 dark:border-zinc-700/60 dark:bg-zinc-800/60 dark:text-zinc-400 dark:hover:border-zinc-500'
             }`}
           >
             {style}

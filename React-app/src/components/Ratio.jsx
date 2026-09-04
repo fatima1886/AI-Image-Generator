@@ -38,7 +38,7 @@ const AspectRatioSelector = () => {
 
   return (
     <div className="flex flex-col space-y-2 mt-4">
-      <span className="text-zinc-400 text-xs font-semibold uppercase tracking-wider">Aspect Ratio</span>
+      <span className="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Aspect Ratio</span>
       
       <div className="flex gap-2">
         {options.map((opt) => (
@@ -48,7 +48,7 @@ const AspectRatioSelector = () => {
             className={`px-4 py-1.5 text-xs font-semibold rounded-lg transition-colors border cursor-pointer ${
               ratio === opt 
                 ? 'bg-[#df7829] text-white border-[#df7829]' 
-                : 'bg-zinc-800/60 text-zinc-400 border-zinc-700/60 hover:border-zinc-500'
+                : 'border-zinc-200 bg-zinc-50 text-zinc-600 hover:border-zinc-400 dark:border-zinc-700/60 dark:bg-zinc-800/60 dark:text-zinc-400 dark:hover:border-zinc-500'
             }`}
           >
             {opt}

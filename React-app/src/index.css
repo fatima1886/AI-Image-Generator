@@ -9,6 +9,8 @@
 
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* Change .orbitron to .font-orbitron */
 .font-orbitron {
   font-family: "Orbitron", sans-serif;
