@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 import AspectRatioSelector from './Ratio';
 import Presents from './presents';
 
-const Card1 = ({prompt,setprompt,setImageUrl,loading,setLoading}) => {
+const Card1 = ({prompt,setprompt,setImageUrl,loading,setLoading,setotherprompt}) => {
   const [quality, setQuality] = useState(50);
   // const [prompt, setprompt] = useState("");
   
@@ -20,6 +20,7 @@ const Card1 = ({prompt,setprompt,setImageUrl,loading,setLoading}) => {
       setError("Please enter a prompt first!");
       return;
     }
+    setotherprompt(prompt)
 setprompt("")
     setLoading(true);
     setError("");
@@ -81,10 +82,15 @@ setprompt("")
         </div>
 
         {/* Prompt Input Box */}
-        <div className="flex flex-col space-y-1.5">
+        <div className="flex flex-col space-y-1.5 ">
           <label className="text-zinc-400 text-xs font-semibold uppercase tracking-wider">Your Prompt</label>
           <textarea 
-            className='w-full h-[120px] bg-zinc-800/80 border border-zinc-700/60 rounded-xl p-3.5 focus:outline-none focus:border-[#df7829] text-zinc-100 placeholder-zinc-500 text-sm resize-none transition-colors' 
+            className='w-full h-[120px] bg-zinc-800/80 border border-[#df7829] rounded-sm p-3.5 focus:outline-none focus:border-[#df7829] text-zinc-100 placeholder-zinc-500 text-sm resize-none transition-colors [&::-webkit-scrollbar]:w-2
+ 
+  [&::-webkit-scrollbar-track]:rounded-lg
+ [&::-webkit-scrollbar-thumb]:bg-[#df7829]
+  [&::-webkit-scrollbar-thumb]:rounded-lg
+  [hover:&::-webkit-scrollbar-thumb]:bg-[#f08c3f]">' 
             placeholder="A cybernetic artifact hidden inside a misty mountain shrine..."
             id="prompt-input"
             value={prompt}
