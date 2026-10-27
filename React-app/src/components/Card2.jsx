@@ -15,7 +15,7 @@ const Card2 = ({ imageUrl, loading, setimages, otherprompt, images, setotherprom
   return (
     <>
       {loading &&
-        <div className="relative w-full h-full aspect-square border border-zinc-800 rounded-xl bg-zinc-950 flex flex-col items-center justify-center overflow-hidden shadow-2xl">
+        <div className="mt-3 md:mt-0 relative w-full h-full aspect-square border border-zinc-800 rounded-xl bg-zinc-950 flex flex-col items-center justify-center overflow-hidden shadow-2xl">
           {/* 1. Pulsing Background Gradients */}
           <div className="absolute inset-0 bg-gradient-to-br from-zinc-900 via-zinc-950 to-zinc-900 animate-pulse" />
 
@@ -58,7 +58,7 @@ const Card2 = ({ imageUrl, loading, setimages, otherprompt, images, setotherprom
       {!imageUrl && !loading && <div
         style={{ backgroundImage: `url(/bg-new.jpg)`, objectFit: "cover", objectPosition: "left" }}
         /* FIXED: Added bg-cover, bg-center, bg-no-repeat, and relative position utilities */
-        className=" border border-zinc-800 rounded-2xl flex flex-col items-center justify-center p-6 text-center group min-h-[400px] sm:h-[95vh] relative overflow-hidden bg-cover bg-center bg-no-repeat"
+        className="mt-3 md:mt-0 border border-zinc-800 rounded-2xl flex flex-col items-center justify-center p-6 text-center group min-h-[400px] sm:h-[95vh] relative overflow-hidden bg-cover bg-center bg-no-repeat"
       >
         {/* ADDED: A smooth, dark gradient overlay so your icons/text remain highly readable over the background image */}
         {/* <div className="absolute inset-0 bg-gradient-to-t from-[#161616]/95 via-[#161616]/60 to-transparent z-0"></div> */}
@@ -89,7 +89,7 @@ const Card2 = ({ imageUrl, loading, setimages, otherprompt, images, setotherprom
 
 
 
-      {imageUrl && <div className="relative border-zinc-800 rounded-2xl flex flex-col items-center justify-center  text-center group min-h-[400] h-full w-full sm:h-[95vh] relative overflow-hidden">
+      {imageUrl && <div className="mt-3 md:mt-3 relative border-zinc-800 rounded-2xl flex flex-col items-center justify-center  text-center group min-h-[400] h-full w-full sm:h-[95vh] relative overflow-hidden">
         <img src={imageUrl} alt="" className='object-cover h-full w-full [image-rendering:crisp-edges] contrast-105 brightness-100 saturated-105 rounded-xl' />
         <button onClick={handlesave} className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-neutral-950 text-white font-semibold text-xs tracking-wider uppercase px-6 py-2.5 rounded-lg border border-[#df7829] shadow-xl cursor-pointer transition-all duration-300 transform ease-out hover:scale-105 hover:-translate-y-1 hover:border-[#df7829] hover:shadow-[#df7829]">
           Add to History

@@ -3,7 +3,7 @@
 
 import React, { useState } from 'react'
 import AspectRatioSelector from './Ratio';
-import Presents from './presents';
+import Presents from './Presents';
 import ThemeToggle from './ThemeToggle';
 
 const Card1 = ({prompt,setprompt,setImageUrl,loading,setLoading,setotherprompt}) => {
@@ -63,7 +63,7 @@ setprompt("")
 
 
   return (
-    <div className='flex h-fit w-full flex-col justify-start space-y-3  rounded-2xl bg-white p-3 shadow-xl shadow-gray-400 sm:justify-between sm:space-y-5 sm:border sm:border-zinc-200 sm:p-5 dark:border-zinc-800 dark:bg-zinc-900'>
+    <div className='mt-3 md:mt-0 flex h-fit w-full flex-col justify-start space-y-3  rounded-2xl bg-white p-3 shadow-xl shadow-gray-400 sm:justify-between sm:space-y-5 sm:border sm:border-zinc-200 sm:p-5 dark:border-zinc-800 dark:bg-zinc-900'>
       {/* Top Controls Area */}
       <div className='flex flex-col space-y-3 sm:space-y-5'>
         

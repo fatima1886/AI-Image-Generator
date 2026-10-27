@@ -8,7 +8,7 @@ const Card3 = ({ images,setprompt,setImageUrl }) => {
   }
   return (
     !images?.length ? (
-        ( <div className="flex flex-col items-center justify-center text-center p-8 border border border-[#df7829] bg-gray-100 dark:bg-slate-800 rounded-xl h-[95vh] h-[70%] min-h-[250px] w-full group transition-all duration-500 hover:border-[#df7829]/50">
+        ( <div className="mt-3 md:mt-0 flex flex-col items-center justify-center text-center p-8 border border border-[#df7829] bg-gray-100 dark:bg-slate-800 rounded-xl h-[95vh] h-[70%] min-h-[250px] w-full group transition-all duration-500 hover:border-[#df7829]/50">
       
       {/* Animated Icon Container */}
       <div className="relative mb-4 flex items-center justify-center">
@@ -41,7 +41,7 @@ const Card3 = ({ images,setprompt,setImageUrl }) => {
 
     </div>)
     ) : (
-     <div className='flex flex-col gap-4 h-full w-full border border-slate-700 bg-slate-900 rounded-xl p-4 shadow-md'>
+     <div className='mt-3 md:mt-0 flex flex-col gap-4 h-full w-full border border-slate-700 bg-slate-900 rounded-xl p-4 shadow-md'>
       <h1 className='text-xl md:text-2xl text-[#df7829] font-semibold tracking-tight text-center'>
         Your History Images
       </h1>
